@@ -4,6 +4,10 @@ A separate, deployment-ready Streamlit version of NBA Prop Lab. This folder is
 self-contained: it does not import, modify, or read data from `nba_props_app` or
 `underdog-lab-starter`.
 
+**Live app:** https://nba-prop-lab-shared.streamlit.app/
+
+**Source:** https://github.com/rajvanshyr/nba-prop-lab-shared
+
 ## Use the app
 
 1. Enter **your ParlayAPI key** in the sidebar, then click **Refresh live props**.
@@ -77,20 +81,24 @@ Run tests without paid requests:
 python -m unittest discover -s tests -v
 ```
 
-## Deploy later on Streamlit Community Cloud
+## Streamlit Community Cloud deployment
 
-Deployment has not been performed. When ready:
+The app is deployed publicly from this separate repository with these settings:
 
-1. Create a **new** GitHub repository containing the contents of this folder at
-   its root (`app.py`, `requirements.txt`, `.streamlit/config.toml`, etc.).
-   Exclude `.env*`, `.streamlit/secrets.toml`, `.venv/`, and `data/` using the
-   supplied `.gitignore`. Do not upload the parent project or original app.
-2. In Community Cloud, create an app from that repository and choose `app.py`
-   as the entrypoint. Python 3.12 is suitable for the declared dependencies.
-3. Leave the hosting API-key/secrets settings empty. Visitors provide their own
-   keys through the app; no keys need to be configured on the host.
-4. Deploy and share the provided HTTPS URL. Updates to this repository affect
-   this copy only.
+- Repository: `rajvanshyr/nba-prop-lab-shared`
+- Branch: `main`
+- Entrypoint: `app.py`
+- Python: `3.12`
+- URL: https://nba-prop-lab-shared.streamlit.app/
+- Hosting API keys/secrets: **empty**; visitors enter their own keys.
+
+Only this app's source repository is public. Private-repository access was not
+granted to Streamlit. The original app remains separate and unchanged.
+
+Push reviewed changes to this repository's `main` branch to update the hosted
+app automatically. Do not push the parent project or original app. The supplied
+`.gitignore` excludes `.env*`, `.streamlit/secrets.toml`, `.venv/`, and `data/`.
+Never add owner API keys to the host or the source repository.
 
 See [Streamlit's deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy).
 

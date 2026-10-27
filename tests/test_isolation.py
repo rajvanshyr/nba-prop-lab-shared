@@ -59,8 +59,10 @@ class SessionStoreTests(unittest.TestCase):
         session_store.clear_board_data(state)
         self.assertEqual(set(state), {"props_api_key", "research_api_key", "last_props_attempt"})
         session_store.clear_session(state)
-        self.assertEqual(set(state), {"last_props_attempt"})
+        self.assertEqual(set(state), {"last_props_attempt", "props_api_key", "research_api_key", "board_source"})
         self.assertEqual(session_store.visitor_key(state), "")
+        self.assertEqual(session_store.visitor_key(state, "research_api_key"), "")
+        self.assertEqual(state["board_source"], "Live / session board")
 
 
 class VisitorDashboardTests(unittest.TestCase):

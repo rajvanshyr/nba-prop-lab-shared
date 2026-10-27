@@ -24,6 +24,11 @@ def clear_session(state):
     for name in list(state):
         if name != "last_props_attempt":
             del state[name]
+    # Explicit widget values also reset the browser controls on newer Streamlit
+    # versions; deleting their state alone can leave a stale selection displayed.
+    state["props_api_key"] = ""
+    state["research_api_key"] = ""
+    state["board_source"] = "Live / session board"
 
 
 def refresh_board(state, fetch=None) -> dict:

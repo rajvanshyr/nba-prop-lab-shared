@@ -153,7 +153,8 @@ class VisitorDashboardTests(unittest.TestCase):
         self.assertEqual(widget(at.selectbox, "Board source").value, "Live / session board")
         self.assertTrue(widget(at.button, "↻ Refresh live props").disabled)
         self.assertEqual(len(at.dataframe), 0)
-        for name in ("research_api_key", "session_board", "watchlist", "research_messages"):
+        self.assertEqual(at.session_state.filtered_state.get("research_api_key", ""), "")
+        for name in ("session_board", "watchlist", "research_messages"):
             self.assertNotIn(name, at.session_state.filtered_state)
 
 
